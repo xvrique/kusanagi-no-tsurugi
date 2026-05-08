@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 export default function Navbar() {
@@ -36,8 +37,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <div className="w-8 h-8 bg-crimson rounded-full flex items-center justify-center">
-            <span className="text-[#1A1714] text-sm font-bold">⊙</span>
+          <div className="relative w-10 h-10">
+            <Image 
+              src="/images/main-logo.png" 
+              alt="NAGI Logo" 
+              fill 
+              className="object-contain" 
+              unoptimized 
+            />
           </div>
           <span className="text-lg font-bold tracking-wider text-ink">$NAGI</span>
         </Link>

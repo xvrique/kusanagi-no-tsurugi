@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://kusanagi-nagi.com",
   },
+  icons: {
+    icon: '/images/main-logo.png',
+  },
 };
 
 export default function RootLayout({

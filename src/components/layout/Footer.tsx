@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
@@ -24,8 +26,14 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-crimson rounded-full flex items-center justify-center">
-                <span className="text-ink text-xs font-bold">⊙</span>
+              <div className="relative w-8 h-8">
+                <Image 
+                  src="/images/main-logo.png" 
+                  alt="NAGI Logo" 
+                  fill 
+                  className="object-contain" 
+                  unoptimized 
+                />
               </div>
               <span className="text-sm font-bold tracking-wider">$NAGI</span>
             </div>

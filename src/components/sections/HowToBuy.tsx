@@ -7,12 +7,12 @@ import { ShieldAlert, Info, ArrowRight, CheckCircle, Lock, AlertTriangle, Extern
 import { Particle } from '../ui/Particle'
 
 const STEP_IMAGES = [
-  '/images/howtobuy/1.png',
-  '/images/howtobuy/2.png',
-  '/images/howtobuy/3.png',
-  '/images/howtobuy/4.png',
-  '/images/howtobuy/5.png',
-  '/images/howtobuy/6.png',
+  '/images/howtobuy/1.png?v=2',
+  '/images/howtobuy/2.png?v=2',
+  '/images/howtobuy/3.png?v=2',
+  '/images/howtobuy/4.png?v=2',
+  '/images/howtobuy/5.png?v=2',
+  '/images/howtobuy/6.png?v=2',
 ]
 
 export default function HowToBuy() {
@@ -101,6 +101,7 @@ export default function HowToBuy() {
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-contain drop-shadow-sm"
+                  unoptimized
                 />
               </div>
 

@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kusanagi no Tsurugi ($NAGI)
+
+A legendary sword minted as a Solana meme coin. Inspired by Japanese mythology, Kusanagi no Tsurugi represents precision, myth, and force. The project is built with a distinctive "Museum-Brutalist" design language, balancing stark, structural elements with deep, atmospheric mythology.
+
+## Overview
+
+Kusanagi no Tsurugi is a high-performance, interactive landing page built to establish the digital presence of the $NAGI token. It features fluid animations, a curated color palette (Cream, Ink, and Crimson), and a responsive, modular component architecture. 
+
+The aesthetic marries traditional Japanese mythos with modern, brutalist web design principles to create a unique and memorable user experience.
+
+## Key Features
+
+- **Museum-Brutalist Aesthetics**: A strict design system utilizing a tri-color palette, rigid grid structures, and sharp typography.
+- **Fluid Animations**: Leveraging Framer Motion for scroll-linked animations, subtle floating particle systems, and interactive UI feedback.
+- **Responsive Architecture**: Fully optimized for mobile, tablet, and desktop environments.
+- **Modular Components**: Maintainable architecture with isolated sections for Hero, About, Mythology, Tokenomics, Roadmap, and How To Buy.
+- **Next.js App Router**: Utilizing the latest Next.js features for optimal performance and SEO.
+
+## Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org/) (App Router)
+- **Library**: [React](https://react.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Language**: TypeScript
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+Ensure you have the following installed on your local machine:
+- Node.js (version 18.17 or higher)
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/xvrique/kusanagi-no-tsurugi.git
+cd kusanagi-no-tsurugi
+```
+
+2. Install the dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+### Running Locally
+
+Start the development server:
 ```bash
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application. The page will auto-update as you edit the source files.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/src/app`: Core Next.js routing and layout configuration.
+- `/src/components/layout`: Global structural components (Navbar, Footer).
+- `/src/components/sections`: Page-specific modular sections (Hero, About, Tokenomics, etc.).
+- `/src/components/ui`: Reusable UI elements (Buttons, Cards, Badges, Particles).
+- `/src/lib`: Utility functions, animation variants, and constant data.
+- `/public/images`: Static graphical assets, character illustrations, and decorative particles.
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+The application is optimized for deployment on [Vercel](https://vercel.com/), the platform built by the creators of Next.js. Simply import the repository into your Vercel dashboard for an automated, zero-configuration deployment pipeline.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+All rights reserved. $NAGI is a meme coin intended for entertainment purposes. Not financial advice.
