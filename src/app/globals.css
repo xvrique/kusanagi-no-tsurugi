@@ -1,26 +1,279 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F0EDE6;
+  --foreground: #1A1714;
+  
+  /* Color palette - Primary colors */
+  --color-cream: #F0EDE6;
+  --color-ink: #1A1714;
+  --color-crimson: #C41E3A;
+  --color-parchment: #E8E3D9;
+  --color-dark-ink: #0D0B09;
+  --color-ash-gray: #9E9A94;
+  
+  /* Color palette - Accent colors */
+  --color-blood-red: #8B0000;
+  --color-gold: #B8960C;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream: var(--color-cream);
+  --color-ink: var(--color-ink);
+  --color-crimson: var(--color-crimson);
+  --color-parchment: var(--color-parchment);
+  --color-darkInk: var(--color-dark-ink);
+  --color-dark-ink: var(--color-dark-ink);
+  --color-ashGray: var(--color-ash-gray);
+  --color-ash-gray: var(--color-ash-gray);
+  --color-bloodRed: var(--color-blood-red);
+  --color-gold: var(--color-gold);
+  --font-mono: var(--font-space-mono);
+  --font-serif: var(--font-noto-serif-jp);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #F0EDE6;
+    --foreground: #1A1714;
   }
+}
+
+/* Font smoothing for crisp rendering */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  color-scheme: light;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-space-mono), monospace;
+  position: relative;
+}
+
+/* Japanese paper texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" /></filter><rect width="100" height="100" fill="%23F0EDE6" filter="url(%23noise)" opacity="0.03"/></svg>');
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+
+/* Scanlines effect for dark cards */
+@keyframes scanlines {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 4px;
+  }
+}
+
+.scanlines {
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  background-size: 100% 4px;
+}
+
+/* Sepia filter for images */
+.sepia-filter {
+  filter: sepia(0.3) brightness(1.05);
+}
+
+/* Subtle noise texture */
+.noise-texture {
+  background-image: 
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" result="noise" /></filter><rect width="200" height="200" fill="%23000000" filter="url(%23noise)" opacity="0.02"/></svg>');
+  background-repeat: repeat;
+}
+
+/* Floating particles animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(-100px);
+    opacity: 0;
+  }
+}
+
+/* Particle elements */
+.particle {
+  position: fixed;
+  pointer-events: none;
+  font-size: 3rem;
+  opacity: 0.6;
+  z-index: 0;
+  color: #F0EDE6;
+  font-weight: bold;
+}
+
+.particle:nth-child(1) { animation: float 20s infinite; left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { animation: float 25s infinite; left: 20%; animation-delay: 2s; }
+.particle:nth-child(3) { animation: float-reverse 22s infinite; left: 30%; animation-delay: 4s; }
+.particle:nth-child(4) { animation: float 28s infinite; left: 40%; animation-delay: 1s; }
+.particle:nth-child(5) { animation: float-reverse 24s infinite; left: 50%; animation-delay: 3s; }
+.particle:nth-child(6) { animation: float 26s infinite; left: 60%; animation-delay: 5s; }
+.particle:nth-child(7) { animation: float-reverse 23s infinite; left: 70%; animation-delay: 2s; }
+.particle:nth-child(8) { animation: float 27s infinite; left: 80%; animation-delay: 4s; }
+.particle:nth-child(9) { animation: float 21s infinite; left: 90%; animation-delay: 1s; }
+.particle:nth-child(10) { animation: float-reverse 25s infinite; left: 15%; animation-delay: 3s; }
+
+/* Typography utility classes */
+
+/* Heading styles with letter-spacing for brutalist effect */
+@layer components {
+  /* Color utility classes for consistent usage */
+  .bg-cream {
+    @apply bg-[#F0EDE6];
+  }
+
+  .bg-parchment {
+    @apply bg-[#E8E3D9];
+  }
+
+  .bg-ink {
+    @apply bg-[#1A1714];
+  }
+
+  .bg-dark-ink {
+    @apply bg-[#0D0B09];
+  }
+
+  .bg-darkInk {
+    @apply bg-[#0D0B09];
+  }
+
+  .bg-crimson {
+    @apply bg-[#C41E3A];
+  }
+
+  .bg-bloodRed {
+    @apply bg-[#8B0000];
+  }
+
+  .text-ink {
+    @apply text-[#1A1714];
+  }
+
+  .text-cream {
+    @apply text-[#F0EDE6];
+  }
+
+  .text-crimson {
+    @apply text-[#C41E3A];
+  }
+
+  .text-ash-gray {
+    @apply text-[#9E9A94];
+  }
+
+  .border-crimson {
+    @apply border-[#C41E3A];
+  }
+
+  .border-ink {
+    @apply border-[#1A1714];
+  }
+
+  /* Heading styles with letter-spacing for brutalist effect */
+  .heading-h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider font-mono;
+  }
+
+  .heading-h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide font-mono;
+  }
+
+  .heading-h3 {
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold tracking-wide font-mono;
+  }
+
+  .heading-h4 {
+    @apply text-xl md:text-2xl lg:text-3xl font-bold tracking-normal font-mono;
+  }
+
+  /* Body text with appropriate letter-spacing */
+  .body-text {
+    @apply text-base md:text-lg tracking-normal font-mono;
+  }
+
+  .body-text-sm {
+    @apply text-sm md:text-base tracking-normal font-mono;
+  }
+
+  /* Japanese text styles */
+  .text-jp {
+    @apply font-serif;
+  }
+
+  .heading-jp {
+    @apply font-serif font-bold tracking-wide;
+  }
+
+  /* Monospace text for addresses and code */
+  .font-mono-text {
+    @apply font-mono tracking-tight;
+  }
+
+  /* Letter-spacing utilities for brutalist typography */
+  .letter-spacing-tight {
+    @apply tracking-tight;
+  }
+
+  .letter-spacing-normal {
+    @apply tracking-normal;
+  }
+
+  .letter-spacing-wide {
+    @apply tracking-wide;
+  }
+
+  .letter-spacing-wider {
+    @apply tracking-wider;
+  }
 }
