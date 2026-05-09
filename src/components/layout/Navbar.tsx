@@ -30,8 +30,8 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? 'backdrop-blur-md border-b border-ink/10 bg-cream/80'
-          : 'bg-cream'
+          ? 'backdrop-blur-md border-b border-ink/10 bg-transparent'
+          : 'bg-transparent'
         }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -67,7 +67,7 @@ export default function Navbar() {
           href={process.env.NEXT_PUBLIC_RAYDIUM_LINK || '#'}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-4 py-2 bg-crimson text-black text-sm font-bold tracking-wider hover:bg-crimson/90 transition-colors duration-200 uppercase"
+          className="px-3 py-1.5 md:px-4 md:py-2 bg-crimson text-black text-xs md:text-sm font-bold tracking-wider hover:bg-crimson/90 transition-colors duration-200 uppercase whitespace-nowrap flex-shrink-0"
         >
           ✳ buy $nagi ✳
         </a>

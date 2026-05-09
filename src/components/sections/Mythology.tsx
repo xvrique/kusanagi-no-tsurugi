@@ -1,14 +1,33 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import MythologyCard from '@/components/ui/MythologyCard'
+import MythologyModal from '@/components/ui/MythologyModal'
 import { getMythologyData } from '@/lib/constants'
 import { Particle } from '../ui/Particle'
 
 export default function Mythology() {
   const [active, setActive] = useState<string | null>(null)
+  const [selectedMyth, setSelectedMyth] = useState<any | null>(null)
   const myths = getMythologyData()
+
+  const playSwordSound = () => {
+    const audio = new Audio('/sounds/swordslice.mp3')
+    audio.volume = 0.3
+    audio.play().catch(() => {
+      // Ignore audio play errors (e.g. browser policy)
+    })
+  }
+
+  const handleCardClick = (myth: any) => {
+    playSwordSound()
+    if (active === myth.id) {
+      setSelectedMyth(myth)
+    } else {
+      setActive(myth.id)
+    }
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -31,7 +50,7 @@ export default function Mythology() {
   }
 
   return (
-    <section id="mythology" className="min-h-screen bg-cream py-24 pb-48 px-6 relative overflow-hidden">
+    <section id="mythology" className={`min-h-screen bg-cream py-24 pb-48 px-6 relative overflow-hidden ${selectedMyth ? 'z-[100]' : 'z-0'}`}>
       {/* Particles */}
       <Particle src="/images/particles/sword2.png" className="top-[5%] left-[5%] w-32 h-32 -rotate-12" opacity={0.15} delay={1} floatType="subtle" />
       <Particle src="/images/particles/hebi3.png" className="top-[30%] right-[2%] w-48 h-48 rotate-45" opacity={0.1} delay={0.5} floatType="subtle" />
@@ -68,7 +87,7 @@ export default function Mythology() {
           {/* Title row */}
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
-              <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-ink leading-[0.9] uppercase mb-3">
+              <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-ink leading-tight md:leading-[0.9] uppercase mb-3">
                 MYTHOLOGY
                 <br />
                 <span className="text-crimson">ARCHIVE</span>
@@ -84,7 +103,7 @@ export default function Mythology() {
                 {myths.map((m) => (
                   <button
                     key={m.id}
-                    onClick={() => setActive(m.id)}
+                    onClick={() => handleCardClick(m)}
                     className={`w-2.5 h-2.5 transition-all duration-300 ${active === m.id ? 'bg-crimson scale-125' : 'bg-ink/20 hover:bg-ink/40'
                       }`}
                   />
@@ -107,12 +126,22 @@ export default function Mythology() {
               <MythologyCard
                 myth={myth}
                 isActive={active === myth.id}
-                onClick={() => setActive(active === myth.id ? null : myth.id)}
+                onClick={() => handleCardClick(myth)}
                 index={index}
               />
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Modal */}
+        <AnimatePresence>
+          {selectedMyth && (
+            <MythologyModal 
+              myth={selectedMyth} 
+              onClose={() => setSelectedMyth(null)} 
+            />
+          )}
+        </AnimatePresence>
 
 
 

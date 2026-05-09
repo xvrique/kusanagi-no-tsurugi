@@ -2,7 +2,9 @@
 
 import Hero from '@/components/sections/Hero'
 import Mythology from '@/components/sections/Mythology'
+import LoreGenerator from '@/components/sections/LoreGenerator'
 import About from '@/components/sections/About'
+import ContractAddress from '@/components/sections/ContractAddress'
 import Tokenomics from '@/components/sections/Tokenomics'
 import Roadmap from '@/components/sections/Roadmap'
 import HowToBuy from '@/components/sections/HowToBuy'
@@ -27,7 +29,9 @@ export default function Home() {
       <div className="relative z-10">
         <Hero />
         <Mythology />
+        <LoreGenerator />
         <About />
+        <ContractAddress />
         <Tokenomics />
         <Roadmap />
         <HowToBuy />

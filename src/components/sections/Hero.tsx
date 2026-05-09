@@ -38,26 +38,26 @@ export default function Hero() {
         <Particle src="/images/particles/sword2.png" className="bottom-[10%] right-[30%] w-56 h-56 rotate-45" opacity={0.15} delay={2.5} floatType="subtle" />
 
         {/* Giant Background Title - positioned in upper area as a horizontal band */}
-        <div className="absolute left-0 right-0 top-[25%] pointer-events-none z-0 select-none flex items-center justify-center">
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, ease: 'easeOut' }}
-            className="w-full flex items-center justify-center gap-[10vw] px-0"
+        <div className="absolute left-0 right-0 top-[20%] md:top-[25%] pointer-events-none z-0 select-none flex items-center justify-center">
+          <div
+            className="w-full flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-[10vw] px-0"
           >
-            <span className="text-[8vw] font-black tracking-[-0.04em] text-ink leading-[0.85] uppercase" style={{ transform: 'scaleY(1.35)', transformOrigin: 'center' }}>
+            <span className="text-[12vw] md:text-[8vw] font-black tracking-[-0.04em] text-ink leading-none md:leading-[0.85] uppercase" style={{ transform: 'scaleY(1.35)', transformOrigin: 'center' }}>
               KUSANAGI
             </span>
-            <span className="text-[8vw] font-black tracking-[-0.04em] text-ink leading-[0.85] uppercase whitespace-nowrap" style={{ transform: 'scaleY(1.35)', transformOrigin: 'center' }}>
+            <span className="text-[12vw] md:text-[8vw] font-black tracking-[-0.04em] text-ink leading-none md:leading-[0.85] uppercase whitespace-nowrap" style={{ transform: 'scaleY(1.35)', transformOrigin: 'center' }}>
               NO TSURUGI
             </span>
-          </motion.div>
+          </div>
         </div>
 
         {/* Main coin mark */}
         <div className="absolute inset-0 flex items-end justify-center z-10 pointer-events-none">
           <div className="relative w-full flex items-end justify-center">
             <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, ease: 'easeOut', delay: 0.2 }}
               className="relative w-[min(85vw,720px)] h-[95vh] flex items-end justify-center"
             >
               <Image
@@ -72,6 +72,9 @@ export default function Hero() {
           </div>
         </div>
 
+        {/* Gradient for text readability on mobile */}
+        <div className="absolute inset-x-0 bottom-0 h-[60vh] bg-gradient-to-t from-cream via-cream/80 to-transparent pointer-events-none md:hidden z-10" />
+
         {/* Foreground Content - bottom left & right info */}
         <motion.div
           variants={containerVariants}
@@ -85,7 +88,7 @@ export default function Hero() {
               {/* Left Column */}
               <motion.div
                 variants={itemVariants}
-                className="flex flex-col gap-8 pointer-events-auto max-w-[260px]"
+                className="flex flex-col gap-8 pointer-events-auto max-w-[260px] pb-16 md:pb-0 z-30"
               >
                 <div className="space-y-5 text-[10px] font-bold leading-relaxed text-ink uppercase tracking-[0.15em]">
                   <div className="space-y-0.5">
@@ -116,7 +119,7 @@ export default function Hero() {
               {/* Right Column */}
               <motion.div
                 variants={itemVariants}
-                className="flex flex-col gap-6 items-end text-right pointer-events-auto max-w-[220px]"
+                className="hidden md:flex flex-col gap-6 items-end text-right pointer-events-auto max-w-[220px]"
               >
                 <div className="space-y-5">
                   <p className="text-[10px] font-black uppercase tracking-[0.3em] text-ink">Kusanagi Blade</p>

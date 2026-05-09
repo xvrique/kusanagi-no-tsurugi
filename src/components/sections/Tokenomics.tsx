@@ -3,16 +3,14 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { getTokenomicsData } from '@/lib/constants'
-import { Users, Droplets, Code2, Megaphone, Star, Flower2 } from 'lucide-react'
+import { Users, Banknote, Code2, Flower2 } from 'lucide-react'
 import { Particle } from '../ui/Particle'
 
 // ── Static pie data ── computed once at module level to avoid SSR/client mismatch
 const PIE_DATA = [
-  { label: 'COMMUNITY', pct: 40, color: '#C41E3A' },
-  { label: 'LIQUIDITY POOL', pct: 30, color: '#E8A0A0' },
-  { label: 'DEVELOPMENT', pct: 15, color: '#D4C4B0' },
-  { label: 'MARKETING', pct: 10, color: '#F0DDD0' },
-  { label: 'STAKING REWARDS', pct: 5, color: '#F5EDE6' },
+  { label: 'RETAIL', pct: 81, color: '#C41E3A' },
+  { label: 'FUNDING', pct: 6, color: '#E8A0A0' },
+  { label: 'DEV', pct: 3, color: '#D4C4B0' },
 ]
 
 function buildSegments() {
@@ -21,9 +19,11 @@ function buildSegments() {
   const INNER_RADIUS = 30
   const LEADER_RADIUS = 48
 
+  const TOTAL = PIE_DATA.reduce((sum, seg) => sum + seg.pct, 0)
+
   return PIE_DATA.map((seg) => {
-    const startAngle = (cum / 100) * 360
-    const endAngle = ((cum + seg.pct) / 100) * 360
+    const startAngle = (cum / TOTAL) * 360
+    const endAngle = ((cum + seg.pct) / TOTAL) * 360
     cum += seg.pct
 
     const toRad = (deg: number) => ((deg - 90) * Math.PI) / 180
@@ -39,10 +39,11 @@ function buildSegments() {
     const ly = parseFloat((50 + INNER_RADIUS * Math.sin(midAngle)).toFixed(4))
 
     // Leader line points
+    const leaderRadius = seg.label === 'DEV' ? 65 : seg.label === 'FUNDING' ? 38 : 48
     const p1x = parseFloat((50 + RADIUS * Math.cos(midAngle)).toFixed(4))
     const p1y = parseFloat((50 + RADIUS * Math.sin(midAngle)).toFixed(4))
-    const p2x = parseFloat((50 + LEADER_RADIUS * Math.cos(midAngle)).toFixed(4))
-    const p2y = parseFloat((50 + LEADER_RADIUS * Math.sin(midAngle)).toFixed(4))
+    const p2x = parseFloat((50 + leaderRadius * Math.cos(midAngle)).toFixed(4))
+    const p2y = parseFloat((50 + leaderRadius * Math.sin(midAngle)).toFixed(4))
 
     return { ...seg, d, lx, ly, p1x, p1y, p2x, p2y, midAngle }
   })
@@ -52,13 +53,13 @@ function buildSegments() {
 const SEGMENTS = buildSegments()
 
 // Allocation icons matching the reference
-const ALLOCATION_ICONS = [Users, Droplets, Code2, Megaphone, Star]
+const ALLOCATION_ICONS = [Users, Banknote, Code2]
 
 export default function Tokenomics() {
   const tokenomics = getTokenomicsData()
 
   return (
-    <section id="tokenomics" className="relative bg-cream py-24 px-6 overflow-hidden">
+    <section id="tokenomics" className="relative bg-cream py-24 px-6 overflow-hidden scroll-mt-24">
       {/* Particles */}
       <Particle src="/images/particles/sword3.png" className="top-[5%] right-[2%] w-56 h-56 rotate-[30deg]" opacity={0.15} delay={1.5} floatType="subtle" />
       <Particle src="/images/particles/leaves7.png" className="top-[50%] right-[10%] w-32 h-32" opacity={0.4} delay={0} floatType="rotate" />
@@ -96,7 +97,7 @@ export default function Tokenomics() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-6xl md:text-8xl font-black tracking-tighter text-[#C41E3A] mb-4 uppercase">
+          <h2 className="text-5xl md:text-8xl font-black tracking-tight md:tracking-tighter text-[#C41E3A] mb-4 uppercase">
             TOKENOMICS
           </h2>
           <div className="flex items-center justify-center gap-3 mb-3">
@@ -160,10 +161,10 @@ export default function Tokenomics() {
           className="border border-ink bg-cream/30 mb-12 overflow-hidden"
         >
           {/* Two column: List + Pie Chart */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 divide-x divide-ink">
+          <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-ink">
 
             {/* Left: Allocation List */}
-            <div className="p-8 md:p-10 bg-cream/30">
+            <div className="p-6 md:p-10 bg-cream/30">
               {/* Title with Blossom */}
               <div className="flex items-center gap-3 mb-10">
                 <Flower2 className="text-crimson w-6 h-6" fill="currentColor" fillOpacity={0.2} />
@@ -210,9 +211,9 @@ export default function Tokenomics() {
             </div>
 
             {/* Right: Pie Chart (SVG) */}
-            <div className="p-12 md:p-16 relative flex items-center justify-center bg-cream/10 min-h-[400px]">
+            <div className="p-2 md:p-4 relative flex items-center justify-center bg-cream/10 min-h-[550px] md:min-h-[800px] overflow-hidden">
               {/* SVG Pie */}
-              <svg viewBox="0 0 100 100" className="w-full max-w-[320px] aspect-square drop-shadow-md overflow-visible">
+              <svg viewBox="-25 -25 150 150" className="w-full max-w-[800px] aspect-square drop-shadow-md overflow-visible">
                 <defs>
                   {/* Seigaiha Pattern */}
                   <pattern id="wavePattern" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale(0.5)">
@@ -243,7 +244,7 @@ export default function Tokenomics() {
                     
                     {/* Leader lines */}
                     <motion.polyline
-                      points={`${seg.p1x},${seg.p1y} ${seg.p2x},${seg.p2y} ${seg.p2x + (seg.p2x > 50 ? 6 : -6)},${seg.p2y}`}
+                      points={`${seg.p1x},${seg.p1y} ${seg.p2x},${seg.p2y} ${seg.p2x + (seg.p2x > 50 ? 10 : -10)},${seg.p2y}`}
                       fill="none"
                       stroke="#1a1a1a"
                       strokeWidth="0.3"
@@ -253,17 +254,23 @@ export default function Tokenomics() {
                     />
                     
                     {/* External Labels */}
-                    <foreignObject 
-                      x={seg.p2x + (seg.p2x > 50 ? 8 : -38)} 
-                      y={seg.p2y - 6} 
-                      width="35" 
-                      height="15"
+                    <motion.text
+                      x={seg.p2x + (seg.p2x > 50 ? 12 : -12)}
+                      y={seg.p2y}
+                      fill="#C41E3A"
+                      textAnchor={seg.p2x > 50 ? "start" : "end"}
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ duration: 0.3, delay: 0.8 }}
+                      className="font-black font-sans uppercase"
                     >
-                      <div className={`flex flex-col ${seg.p2x > 50 ? 'items-start' : 'items-end'}`}>
-                        <span className="text-[5px] font-black text-crimson leading-none">{seg.pct}%</span>
-                        <span className="text-[2.5px] font-black text-[#C41E3A] tracking-tighter leading-tight uppercase whitespace-nowrap">{seg.label}</span>
-                      </div>
-                    </foreignObject>
+                      <tspan x={seg.p2x + (seg.p2x > 50 ? 12 : -12)} dy="-1.5" fontSize="6">
+                        {seg.pct}%
+                      </tspan>
+                      <tspan x={seg.p2x + (seg.p2x > 50 ? 12 : -12)} dy="5.5" fontSize="3" letterSpacing="0.2">
+                        {seg.label}
+                      </tspan>
+                    </motion.text>
 
                     {/* Inner percentage labels */}
                     <text
@@ -303,7 +310,7 @@ export default function Tokenomics() {
           className="border border-ink bg-cream/50 p-6 md:p-8 flex flex-col md:flex-row items-start gap-8 relative overflow-hidden"
         >
           {/* Decorative line inside */}
-          <div className="absolute left-1/4 top-0 bottom-0 w-px bg-ink/10" />
+          <div className="absolute left-1/4 top-0 bottom-0 w-px bg-ink/10 hidden md:block" />
 
           {/* Stamp Icon */}
           <div className="w-16 h-16 border-2 border-crimson rounded-full flex items-center justify-center flex-shrink-0 bg-cream relative z-10">

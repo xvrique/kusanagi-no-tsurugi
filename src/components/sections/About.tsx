@@ -104,9 +104,15 @@ export default function About() {
             viewport={{ once: true }}
             className="lg:col-span-4 flex flex-col gap-12 px-4 lg:px-8 pt-8"
           >
-            {/* Decorative Sun Circle */}
-            <div className="w-20 h-20 border-2 border-crimson rounded-full flex items-center justify-center self-center lg:self-start">
-              <div className="w-[calc(100%-8px)] h-[calc(100%-8px)] border border-crimson/30 rounded-full"></div>
+            {/* Main Logo Image */}
+            <div className="relative w-20 h-20 self-center lg:self-start flex-shrink-0">
+              <Image
+                src="/images/main-logo.png"
+                alt="$NAGI Logo"
+                fill
+                className="object-contain"
+                unoptimized
+              />
             </div>
 
             <div className="space-y-8">

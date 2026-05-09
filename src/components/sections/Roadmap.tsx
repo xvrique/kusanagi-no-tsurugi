@@ -52,7 +52,8 @@ export default function Roadmap() {
       </div>
 
       {/* Fuji Hero (Top Right) */}
-      <div className="absolute top-0 right-0 w-[500px] h-[400px] pointer-events-none opacity-80">
+      <div className="absolute top-[5%] md:top-[10%] right-[10%] md:right-[20%] w-[30vw] h-[30vw] rounded-full bg-crimson/5 blur-3xl pointer-events-none" />
+      <div className="absolute top-24 md:top-0 right-[-10%] md:right-0 w-[400px] md:w-[500px] h-[320px] md:h-[400px] pointer-events-none opacity-20 md:opacity-80">
         <Image
           src="/images/roadmap/5.png"
           alt="Mount Fuji"
@@ -98,7 +99,7 @@ export default function Roadmap() {
           className="mb-24 flex flex-col items-start"
         >
           <div className="relative">
-            <h2 className="text-7xl md:text-9xl font-black tracking-tighter text-[#C41E3A] uppercase leading-none">
+            <h2 className="text-7xl md:text-9xl font-black tracking-tight md:tracking-tighter text-[#C41E3A] uppercase leading-none">
               ROADMAP
             </h2>
             <div className="mt-2 pl-1">
@@ -241,12 +242,16 @@ export default function Roadmap() {
             <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[radial-gradient(#1a1a1a_0.8px,transparent_0.8px)] [background-size:10px_10px]" />
 
             <div className="flex flex-col items-center text-center relative z-10">
-              {/* Kanji Circle */}
+              {/* Nagi Coin Image */}
               <div className="relative mb-6">
-                <div className="w-20 h-20 rounded-full border-[3px] border-crimson flex items-center justify-center bg-cream/30">
-                  <span className="text-4xl font-serif font-black text-crimson">名</span>
+                <div className="relative w-24 h-24 flex items-center justify-center drop-shadow-md">
+                  <Image
+                    src="/images/nagicoin.png"
+                    alt="Nagi Coin"
+                    fill
+                    className="object-contain"
+                  />
                 </div>
-                <div className="absolute -inset-1.5 rounded-full border border-crimson/15 pointer-events-none" />
               </div>
 
               <span className="text-[10px] font-black tracking-[0.4em] text-crimson uppercase mb-3 block">
