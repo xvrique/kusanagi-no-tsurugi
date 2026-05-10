@@ -34,6 +34,8 @@
   --font-serif: var(--font-noto-serif-jp);
 
   --animate-shine: shine 3s infinite;
+  --animate-spin-slow: spin 8s linear infinite;
+  --animate-reverse-spin-slow: reverse-spin 12s linear infinite;
 
   @keyframes shine {
     from {
@@ -44,10 +46,13 @@
     }
   }
 
-  @keyframes holographic {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  @keyframes reverse-spin {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
   }
 }
 
@@ -81,6 +86,8 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   color-scheme: light;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -88,6 +95,20 @@ body {
   color: var(--foreground);
   font-family: var(--font-space-mono), monospace;
   position: relative;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Hide Navbar and prevent scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+
+body.modal-open nav {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease-in-out;
 }
 
 /* Japanese paper texture overlay */
@@ -138,6 +159,12 @@ body::before {
   background-image: 
     url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" result="noise" /></filter><rect width="200" height="200" fill="%23000000" filter="url(%23noise)" opacity="0.02"/></svg>');
   background-repeat: repeat;
+}
+
+/* Traditional Japanese Asanoha Pattern */
+.asanoha-pattern {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="70" viewBox="0 0 40 70"><g fill="none" stroke="%23C41E3A" stroke-width="1" opacity="0.1"><path d="M0 35h40M20 0v70M0 0l40 70M40 0L0 70M0 17.5h40M0 52.5h40"/></g></svg>');
+  background-size: 40px 70px;
 }
 
 /* Floating particles animation */

@@ -11,7 +11,7 @@ export default function MarqueeTicker() {
     '日本武尊',
     'YAMATO TAKERU',
     '$NAGI',
-    'SOLANA MEME COIN',
+    'BASE COIN',
   ]
 
   // Duplicate items for seamless loop
@@ -42,11 +42,10 @@ export default function MarqueeTicker() {
         {displayItems.map((item, index) => (
           <div key={index} className="flex items-center gap-8">
             <span
-              className={`text-sm tracking-wider font-bold ${
-                containsJapanese(item)
+              className={`text-sm tracking-wider font-bold ${containsJapanese(item)
                   ? 'font-serif text-jp text-[#C41E3A]'
                   : 'font-mono text-[#C41E3A]'
-              }`}
+                }`}
             >
               {item}
             </span>

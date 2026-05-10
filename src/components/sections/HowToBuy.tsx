@@ -8,9 +8,9 @@ import { Particle } from '../ui/Particle'
 
 const STEP_IMAGES = [
   '/images/howtobuy/1.png?v=2',
-  '/images/howtobuy/2.png?v=2',
+  '/images/howtobuy/2-b.png?v=2',
   '/images/howtobuy/3.png?v=2',
-  '/images/howtobuy/4.png?v=2',
+  '/images/howtobuy/4-b.png?v=2',
   '/images/howtobuy/5.png?v=2',
   '/images/howtobuy/6.png?v=2',
 ]
@@ -193,7 +193,7 @@ export default function HowToBuy() {
                 Disclaimer
               </h3>
               <p className="text-[11px] text-[#1A1714] leading-relaxed max-w-2xl">
-                $NAGI is a meme coin and is not financial advice. Cryptocurrency trading carries risk. Only invest what you can afford to lose. Do your own research (DYOR) before making any investment decisions. The team is not responsible for any losses incurred.
+                $NAGI is a coin and is not financial advice. Cryptocurrency trading carries risk. Only invest what you can afford to lose. Do your own research (DYOR) before making any investment decisions. The team is not responsible for any losses incurred.
               </p>
             </div>
           </div>

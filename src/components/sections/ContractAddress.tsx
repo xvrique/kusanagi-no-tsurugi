@@ -47,7 +47,7 @@ export default function ContractAddress() {
               Contract <span className="text-crimson">Address</span>
             </h2>
             <p className="text-sm text-ink/60 font-medium tracking-wide max-w-md mx-auto leading-relaxed">
-              Ensure you are interacting with the official $NAGI contract on the Solana blockchain.
+              Ensure you are interacting with the official $NAGI contract on the Base blockchain.
             </p>
           </motion.div>
 
@@ -66,14 +66,18 @@ export default function ContractAddress() {
               <div className="flex flex-col md:flex-row items-stretch md:items-center bg-cream border border-ink/10 overflow-hidden">
                 {/* Left: Network Tag */}
                 <div className="bg-ink text-cream px-6 py-4 flex items-center justify-center gap-3 border-b md:border-b-0 md:border-r border-ink/20">
-                  <Zap className="w-4 h-4 text-crimson" fill="currentColor" />
-                  <span className="text-[11px] font-black tracking-[0.2em] uppercase">SOLANA</span>
+                  {/* Base Network Logo SVG */}
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-blue-500">
+                    <circle cx="12" cy="12" r="12" fill="#0052FF"/>
+                    <path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" fill="white"/>
+                  </svg>
+                  <span className="text-[11px] font-black tracking-[0.2em] uppercase">BASE</span>
                 </div>
 
                 {/* Center: Address String */}
-                <div className="flex-1 px-6 py-4 overflow-hidden">
-                  <p className="text-xs md:text-sm font-mono font-bold text-ink truncate tracking-wider">
-                    {address}
+                <div className="flex-1 px-6 py-4 overflow-hidden flex items-center justify-center">
+                  <p className="text-xs md:text-sm font-mono font-black text-crimson animate-pulse tracking-[0.3em] uppercase">
+                    {address === 'UPCOMING' ? 'UPCOMING' : address}
                   </p>
                 </div>
 

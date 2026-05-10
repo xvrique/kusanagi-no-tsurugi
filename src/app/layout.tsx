@@ -5,17 +5,17 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Kusanagi no Tsurugi",
-  description: "A legendary sword minted as a Solana meme coin. Inspired by Japanese mythology.",
-  keywords: "Solana, meme coin, cryptocurrency, Japanese mythology, Kusanagi",
+  description: "A legendary sword minted as a base coin. Inspired by Japanese mythology.",
+  keywords: "Base, coin, cryptocurrency, Japanese mythology, Kusanagi",
   authors: [{ name: "Kusanagi Team" }],
   openGraph: {
     title: "Kusanagi no Tsurugi",
-    description: "A legendary sword minted as a Solana meme coin. Inspired by Japanese mythology.",
+    description: "A legendary sword minted as a base coin. Inspired by Japanese mythology.",
     type: "website",
-    url: "https://kusanagi-nagi.com",
+    url: "https://kusanagisword.xyz",
   },
   icons: {
-    icon: '/images/main-logo.png',
+    icon: '/images/logo-kusanagi.png',
   },
 };
 

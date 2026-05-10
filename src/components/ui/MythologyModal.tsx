@@ -51,10 +51,10 @@ export default function MythologyModal({ myth, onClose }: MythologyModalProps) {
           </button>
 
           {/* Left Side: Visuals */}
-          <div className="w-full md:w-1/2 relative bg-ink overflow-hidden border-b md:border-b-0 md:border-r border-crimson/20">
+          <div className="w-full h-72 md:h-full md:w-1/2 relative bg-ink overflow-hidden border-b md:border-b-0 md:border-r border-crimson/20 flex-shrink-0">
             {/* Background Kanji */}
             <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
-              <span className="text-[30vw] md:text-[20vw] font-black text-crimson font-serif">
+              <span className="text-[40vw] md:text-[20vw] font-black text-crimson font-serif">
                 {myth.kanji}
               </span>
             </div>

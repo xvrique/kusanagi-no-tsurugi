@@ -126,7 +126,7 @@ export default function Roadmap() {
 
           <div className="space-y-12">
             {roadmap.milestones.map((milestone, index) => {
-              const isUpcoming = !milestone.completed && index !== 0
+              const isUpcoming = !milestone.completed && index > 1
 
               return (
                 <motion.div
@@ -246,8 +246,8 @@ export default function Roadmap() {
               <div className="relative mb-6">
                 <div className="relative w-24 h-24 flex items-center justify-center drop-shadow-md">
                   <Image
-                    src="/images/nagicoin.png"
-                    alt="Nagi Coin"
+                    src="/images/logo-kusanagi.png"
+                    alt="Kusanagi Coin"
                     fill
                     className="object-contain"
                   />

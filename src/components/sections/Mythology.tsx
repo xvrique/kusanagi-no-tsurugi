@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import MythologyCard from '@/components/ui/MythologyCard'
 import MythologyModal from '@/components/ui/MythologyModal'
@@ -11,6 +11,16 @@ export default function Mythology() {
   const [active, setActive] = useState<string | null>(null)
   const [selectedMyth, setSelectedMyth] = useState<any | null>(null)
   const myths = getMythologyData()
+
+  // Manage body scroll and navbar visibility when modal is open
+  useEffect(() => {
+    if (selectedMyth) {
+      document.body.classList.add('modal-open')
+    } else {
+      document.body.classList.remove('modal-open')
+    }
+    return () => document.body.classList.remove('modal-open')
+  }, [selectedMyth])
 
   const playSwordSound = () => {
     const audio = new Audio('/sounds/swordslice.mp3')

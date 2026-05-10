@@ -63,7 +63,7 @@ export default function LoreGenerator() {
 
   const handleShareX = () => {
     if (!lore) return
-    const text = `I awakened my Kusanagi fate.\n\n${lore.name}, ${lore.samuraiTitle}\nClan: ${lore.clanName}\nWeapon: ${lore.divineWeapon}\nElement: ${lore.element}\nRarity: ${lore.rarity}\n\nAwaken yours:\nhttps://kusanagi-no-tsurugi.vercel.app\n\n$NAGI #Kusanagi #Solana`
+    const text = `I awakened my Kusanagi fate.\n\n${lore.name}, ${lore.samuraiTitle}\nClan: ${lore.clanName}\nWeapon: ${lore.divineWeapon}\nElement: ${lore.element}\nRarity: ${lore.rarity}\n\nAwaken yours:\nhttps://kusanagi-no-tsurugi.vercel.app\n\n$NAGI #Kusanagi #Base`
     const encodedText = encodeURIComponent(text)
     window.open(`https://twitter.com/intent/tweet?text=${encodedText}`, '_blank')
   }
@@ -80,7 +80,7 @@ export default function LoreGenerator() {
         {/* Large Guardian Snakes */}
         <Particle src="/images/particles/hebi4.png" className="top-0 -left-[10%] w-[50vw] h-[50vw]" opacity={0.07} delay={0} floatType="subtle" />
         <Particle src="/images/particles/hebi1.png" className="bottom-0 -right-[10%] w-[40vw] h-[40vw]" opacity={0.05} delay={1} floatType="wide" />
-        
+
         {/* Floating Swords */}
         <Particle src="/images/particles/sword2.png" className="top-[20%] right-[10%] w-48 h-48 -rotate-45" opacity={0.1} delay={2} floatType="subtle" />
         <Particle src="/images/particles/sword3.png" className="bottom-[30%] left-[5%] w-56 h-56 rotate-[160deg]" opacity={0.08} delay={4} floatType="rotate" />
@@ -128,21 +128,21 @@ export default function LoreGenerator() {
           <AnimatePresence mode="wait">
             {!lore ? (
               /* Phase 1: Ritual Input (Centered) */
-              <motion.div 
+              <motion.div
                 key="ritual-input"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, filter: 'blur(20px)' }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="w-full max-w-[420px]"
+                className="w-full max-w-[360px]"
               >
                 <div className="relative group">
                   {/* The Ritual Box */}
-                  <div className="bg-black/40 backdrop-blur-xl p-8 relative overflow-hidden border-2 border-gold/40 shadow-[0_0_100px_rgba(0,0,0,0.5)]">
+                  <div className="bg-black/40 backdrop-blur-xl p-6 relative overflow-hidden border-2 border-gold/40 shadow-[0_0_100px_rgba(0,0,0,0.5)]">
                     {/* Interior Atmosphere */}
                     <div className="absolute inset-0 opacity-[0.15] pointer-events-none noise-texture mix-blend-overlay" />
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(184,150,12,0.1),transparent)]" />
-                    
+
                     {/* Ancient Decorative Lines */}
                     <div className="absolute top-4 inset-x-4 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
                     <div className="absolute bottom-4 inset-x-4 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
@@ -155,14 +155,14 @@ export default function LoreGenerator() {
                     <div className="absolute bottom-0 left-0 w-12 h-12 border-b-4 border-l-4 border-gold/60" />
                     <div className="absolute bottom-0 right-0 w-12 h-12 border-b-4 border-r-4 border-gold/60" />
 
-                    <div className="relative z-10 space-y-8">
-                      <div className="text-center space-y-4">
-                        <div className="flex items-center justify-center gap-4">
-                          <div className="h-px w-8 bg-gold/30" />
-                          <span className="text-xs font-black text-gold/80 tracking-[0.6em] uppercase">Inscribe Your Soul</span>
-                          <div className="h-px w-8 bg-gold/30" />
+                    <div className="relative z-10 space-y-6">
+                      <div className="text-center space-y-3">
+                        <div className="flex items-center justify-center gap-3">
+                          <div className="h-px w-6 bg-gold/30" />
+                          <span className="text-[10px] font-black text-gold/80 tracking-[0.6em] uppercase">Inscribe Your Soul</span>
+                          <div className="h-px w-6 bg-gold/30" />
                         </div>
-                        <p className="text-sm text-cream/40 italic font-medium leading-relaxed">
+                        <p className="text-xs text-cream/40 italic font-medium leading-relaxed">
                           The divine blade echoes the vibration of your true essence.
                         </p>
                       </div>
@@ -175,15 +175,15 @@ export default function LoreGenerator() {
                             onChange={(e) => setName(e.target.value)}
                             placeholder="NAME..."
                             maxLength={8}
-                            className="w-full bg-black/60 border border-gold/20 px-6 py-6 text-cream font-mono text-lg focus:outline-none focus:border-gold/60 transition-all placeholder:text-cream/5 tracking-[0.4em] uppercase text-center"
+                            className="w-full bg-black/60 border border-gold/20 px-4 py-4 text-cream font-mono text-base focus:outline-none focus:border-gold/60 transition-all placeholder:text-cream/5 tracking-[0.4em] uppercase text-center"
                           />
                           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-gold w-0 group-focus-within:w-full transition-all duration-1000" />
                         </div>
                         {error && (
-                          <motion.p 
+                          <motion.p
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            className="text-crimson text-[10px] font-black uppercase tracking-[0.5em] text-center"
+                            className="text-crimson text-[9px] font-black uppercase tracking-[0.5em] text-center"
                           >
                             {error}
                           </motion.p>
@@ -193,7 +193,7 @@ export default function LoreGenerator() {
                       <button
                         onClick={handleGenerate}
                         disabled={isGenerating}
-                        className="w-full relative py-6 bg-[#0D0B09] border border-gold/40 text-gold hover:bg-gold hover:text-black transition-all duration-700 disabled:opacity-50 group overflow-hidden"
+                        className="w-full relative py-4 bg-[#0D0B09] border border-gold/40 text-gold hover:bg-gold hover:text-black transition-all duration-700 disabled:opacity-50 group overflow-hidden"
                       >
                         <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(184,150,12,0.1)_50%,transparent_75%)] bg-[length:250%_250%] animate-shimmer" />
                         <div className="relative z-10 flex items-center justify-center gap-6">
@@ -221,14 +221,14 @@ export default function LoreGenerator() {
                 key="ritual-result"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-16 lg:gap-32 w-full max-w-6xl"
+                className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-12 lg:gap-32 w-full max-w-6xl"
               >
                 {/* Left: The Divine Card */}
-                <div className="relative order-2 lg:order-1">
+                <div className="relative order-1 lg:order-1">
                   {/* Background Glow for Card */}
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-gold/10 blur-[150px] pointer-events-none" />
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] border border-gold/10 rounded-full animate-pulse pointer-events-none" />
-                  
+
                   <motion.div
                     initial={{ scale: 0.7, rotateY: 90, filter: 'brightness(2) blur(10px)' }}
                     animate={{ scale: 1, rotateY: 0, filter: 'brightness(1) blur(0px)' }}
@@ -238,13 +238,13 @@ export default function LoreGenerator() {
                     {/* The Prophecy Card */}
                     <div
                       ref={cardRef}
-                      className="w-[400px] h-[640px] relative rounded-none overflow-hidden shadow-[0_0_120px_rgba(0,0,0,0.9)] bg-black"
+                      className="w-[320px] h-[580px] md:w-[400px] md:h-[640px] relative rounded-none overflow-hidden shadow-[0_0_120px_rgba(0,0,0,0.9)] bg-black"
                     >
                       {/* Luxury Textures */}
                       <div className="absolute inset-0 opacity-[0.04] pointer-events-none noise-texture mix-blend-screen z-[10]" />
                       <div className="absolute inset-0 border-[4px] border-gold/40 z-50 pointer-events-none" />
                       <div className="absolute inset-2 border border-gold/20 z-50 pointer-events-none" />
-                      
+
                       {/* Decorative Gold Corners */}
                       <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-gold/70 z-50" />
                       <div className="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-gold/70 z-50" />
@@ -262,7 +262,7 @@ export default function LoreGenerator() {
                       <div className="relative z-40 h-full flex flex-col px-10 py-8">
                         <div className="relative mb-6 mt-2 text-center">
                           <div className="absolute inset-0 bg-[#0D0B09]/95 border-y border-[#B8960C]/40 shadow-2xl" />
-                          <div className="relative z-10 py-5">
+                          <div className="relative z-10 py-4">
                             <div className="text-[11px] font-black text-[#B8960C]/60 tracking-[0.5em] uppercase mb-1">Divine Artifact</div>
                             <h3 className="text-4xl font-black tracking-[0.2em] text-[#F0EDE6] uppercase leading-none">{lore.name}</h3>
                             <div className="flex items-center justify-center gap-4 mt-5">
@@ -273,14 +273,14 @@ export default function LoreGenerator() {
                           </div>
                         </div>
 
-                        <div className="flex-1 flex items-center justify-center relative">
-                          <div className="absolute w-64 h-64 bg-[#B8960C]/10 rounded-full blur-[80px]" />
-                          <Image src={getElementPath(lore.element)} alt={lore.element} width={160} height={160} className="object-contain drop-shadow-[0_0_50px_rgba(184,150,12,0.6)] z-10" />
+                        <div className="flex-1 flex items-center justify-center relative min-h-0">
+                          <div className="absolute w-48 h-48 md:w-64 md:h-64 bg-[#B8960C]/10 rounded-full blur-[60px] md:blur-[80px]" />
+                          <Image src={getElementPath(lore.element)} alt={lore.element} width={120} height={120} className="object-contain drop-shadow-[0_0_40px_rgba(184,150,12,0.6)] z-10 md:w-[160px] md:h-[160px]" />
                         </div>
 
                         <div className="relative mt-auto">
                           <div className="absolute inset-0 bg-[#0D0B09]/95 border-t border-[#B8960C]/20 shadow-2xl" />
-                          <div className="relative z-10 py-8 px-8 text-center">
+                          <div className="relative z-10 py-6 px-8 text-center">
                             <div className="flex items-center justify-center gap-4 mb-4">
                               <div className="h-px w-6 bg-[#C41E3A]/60" />
                               <span className="text-[10px] font-black text-[#C41E3A] tracking-[0.6em] uppercase">The Prophecy</span>
@@ -298,7 +298,7 @@ export default function LoreGenerator() {
                 </div>
 
                 {/* Right: Meta Info & Actions */}
-                <div className="w-full max-w-[420px] space-y-12 order-1 lg:order-2">
+                <div className="w-full max-w-[420px] space-y-12 order-2 lg:order-2">
 
                   {/* Attributes Grid */}
                   <div className="grid grid-cols-1 gap-4">
@@ -308,7 +308,7 @@ export default function LoreGenerator() {
                       { label: 'Primal Source', value: lore.element, icon: '素' },
                       { label: 'Universal Tier', value: lore.rarity.replace('Mhytic', 'Mythic'), color: lore.rarityColor, icon: '品' }
                     ].map((stat, i) => (
-                      <motion.div 
+                      <motion.div
                         key={i}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -319,7 +319,7 @@ export default function LoreGenerator() {
                         <div className="absolute -right-2 -bottom-4 text-7xl font-black text-gold/[0.03] pointer-events-none group-hover/stat:text-gold/[0.07] transition-all duration-700">
                           {stat.icon}
                         </div>
-                        
+
                         <div className="relative z-10 flex justify-between items-center">
                           <div className="space-y-1.5">
                             <div className="flex items-center gap-2">
@@ -339,7 +339,7 @@ export default function LoreGenerator() {
                   </div>
 
                   {/* Operational Controls */}
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.7 }}
@@ -403,10 +403,10 @@ export default function LoreGenerator() {
           >
             {/* Background */}
             <div style={{ position: 'absolute', inset: 0 }}>
-              <img 
-                src={getBackgroundPath(lore.rarity)} 
-                alt="Background" 
-                style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} 
+              <img
+                src={getBackgroundPath(lore.rarity)}
+                alt="Background"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }}
               />
               <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at center, transparent 0%, #000000 100%)' }} />
             </div>
@@ -414,7 +414,7 @@ export default function LoreGenerator() {
             {/* Borders */}
             <div style={{ position: 'absolute', inset: 0, border: '4px solid rgba(184, 150, 12, 0.4)', pointerEvents: 'none' }} />
             <div style={{ position: 'absolute', inset: '8px', border: '1px solid rgba(184, 150, 12, 0.2)', pointerEvents: 'none' }} />
-            
+
             {/* Corners */}
             <div style={{ position: 'absolute', top: 0, left: 0, width: '48px', height: '48px', borderTop: '2px solid rgba(184, 150, 12, 0.7)', borderLeft: '2px solid rgba(184, 150, 12, 0.7)' }} />
             <div style={{ position: 'absolute', top: 0, right: 0, width: '48px', height: '48px', borderTop: '2px solid rgba(184, 150, 12, 0.7)', borderRight: '2px solid rgba(184, 150, 12, 0.7)' }} />
@@ -440,10 +440,10 @@ export default function LoreGenerator() {
               {/* Element */}
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
                 <div style={{ position: 'absolute', width: '280px', height: '280px', backgroundColor: 'rgba(184, 150, 12, 0.1)', borderRadius: '100%', filter: 'blur(90px)' }} />
-                <img 
-                  src={getElementPath(lore.element)} 
-                  alt={lore.element} 
-                  style={{ width: '160px', height: '160px', objectFit: 'contain', position: 'relative', zIndex: 10 }} 
+                <img
+                  src={getElementPath(lore.element)}
+                  alt={lore.element}
+                  style={{ width: '160px', height: '160px', objectFit: 'contain', position: 'relative', zIndex: 10 }}
                 />
               </div>
 

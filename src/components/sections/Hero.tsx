@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import MarqueeTicker from './MarqueeTicker'
 import { Particle } from '../ui/Particle'
+import { UNISWAP_LINK } from '@/lib/constants'
 
 export default function Hero() {
   const containerVariants = {
@@ -38,14 +39,14 @@ export default function Hero() {
         <Particle src="/images/particles/sword2.png" className="bottom-[10%] right-[30%] w-56 h-56 rotate-45" opacity={0.15} delay={2.5} floatType="subtle" />
 
         {/* Giant Background Title - positioned in upper area as a horizontal band */}
-        <div className="absolute left-0 right-0 top-[20%] md:top-[25%] pointer-events-none z-0 select-none flex items-center justify-center">
+        <div className="absolute left-0 right-0 top-[15%] md:top-[25%] pointer-events-none z-0 select-none flex items-center justify-center overflow-hidden">
           <div
-            className="w-full flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-[10vw] px-0"
+            className="w-full flex flex-col md:flex-row items-center justify-center gap-2 md:gap-[10vw] px-4 md:px-0"
           >
-            <span className="text-[12vw] md:text-[8vw] font-black tracking-[-0.04em] text-ink leading-none md:leading-[0.85] uppercase" style={{ transform: 'scaleY(1.35)', transformOrigin: 'center' }}>
+            <span className="text-[14vw] md:text-[8vw] font-black tracking-[-0.04em] text-ink/80 md:text-ink leading-[0.8] md:leading-[0.85] uppercase" style={{ transform: 'scaleY(1.35)', transformOrigin: 'center' }}>
               KUSANAGI
             </span>
-            <span className="text-[12vw] md:text-[8vw] font-black tracking-[-0.04em] text-ink leading-none md:leading-[0.85] uppercase whitespace-nowrap" style={{ transform: 'scaleY(1.35)', transformOrigin: 'center' }}>
+            <span className="text-[14vw] md:text-[8vw] font-black tracking-[-0.04em] text-ink/80 md:text-ink leading-[0.8] md:leading-[0.85] uppercase whitespace-nowrap" style={{ transform: 'scaleY(1.35)', transformOrigin: 'center' }}>
               NO TSURUGI
             </span>
           </div>
@@ -58,7 +59,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: 'easeOut', delay: 0.2 }}
-              className="relative w-[min(85vw,720px)] h-[95vh] flex items-end justify-center"
+              className="relative w-[min(95vw,720px)] h-[85vh] md:h-[95vh] flex items-end justify-center"
             >
               <Image
                 src="/closeup.png"
@@ -88,7 +89,7 @@ export default function Hero() {
               {/* Left Column */}
               <motion.div
                 variants={itemVariants}
-                className="flex flex-col gap-8 pointer-events-auto max-w-[260px] pb-16 md:pb-0 z-30"
+                className="flex flex-col gap-6 md:gap-8 pointer-events-auto max-w-full md:max-w-[260px] pb-10 md:pb-0 z-30"
               >
                 <div className="space-y-5 text-[10px] font-bold leading-relaxed text-ink uppercase tracking-[0.15em]">
                   <div className="space-y-0.5">
@@ -109,14 +110,20 @@ export default function Hero() {
                   </div>
                 </div>
 
-                <button className="w-fit px-7 py-2.5 bg-ink text-crimson hover:bg-crimson hover:text-ink transition-all duration-300">
+                <button 
+                  onClick={() => {
+                    new Audio('/sounds/swordslice.mp3').play();
+                    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="w-fit px-7 py-2.5 bg-crimson text-black hover:bg-crimson/80 transition-all duration-300"
+                >
                   <span className="text-[10px] font-black tracking-[0.3em] uppercase flex items-center gap-2">
                     ▼ DISCOVER ▼
                   </span>
                 </button>
               </motion.div>
 
-              {/* Right Column */}
+              {/* Right Column - Visible on desktop, maybe small version for mobile or hidden */}
               <motion.div
                 variants={itemVariants}
                 className="hidden md:flex flex-col gap-6 items-end text-right pointer-events-auto max-w-[220px]"
@@ -136,11 +143,17 @@ export default function Hero() {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-3 text-xs text-ink/25 font-bold">
-                  <span>✢</span>
-                  <span>✢</span>
-                  <span>✢</span>
-                </div>
+                <a 
+                  href={UNISWAP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => new Audio('/sounds/swordslice.mp3').play()}
+                  className="w-fit px-7 py-2.5 bg-crimson text-black hover:bg-crimson/80 transition-all duration-300"
+                >
+                  <span className="text-[10px] font-black tracking-[0.3em] uppercase flex items-center justify-center gap-2">
+                    ✳ buy $nagi ✳
+                  </span>
+                </a>
               </motion.div>
 
             </div>

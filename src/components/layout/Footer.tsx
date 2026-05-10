@@ -27,18 +27,18 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2">
               <div className="relative w-8 h-8">
-                <Image 
-                  src="/images/main-logo.png" 
-                  alt="NAGI Logo" 
-                  fill 
-                  className="object-contain" 
-                  unoptimized 
+                <Image
+                  src="/images/logo-kusanagi.png"
+                  alt="NAGI Logo"
+                  fill
+                  className="object-contain"
+                  unoptimized
                 />
               </div>
               <span className="text-sm font-bold tracking-wider">$NAGI</span>
             </div>
             <p className="text-xs text-ink leading-relaxed">
-              A legendary sword minted as a Solana meme coin. Inspired by Japanese mythology.
+              A legendary sword minted as a Base coin. Inspired by Japanese mythology.
             </p>
           </div>
 

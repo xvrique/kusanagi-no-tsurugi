@@ -51,7 +51,7 @@ export const MYTHOLOGY_DATA: Myth[] = [
     nameJp: '草薙の剣',
     tag: '(GRASS-CUTTING SWORD)',
     description:
-      'One of the three Imperial Treasures of Japan. A legendary sword that cuts the wind itself. Forged from the body of Yamata no Orochi, it represents divine power and eternal legacy. Now minted as $NAGI on Solana.',
+      'One of the three Imperial Treasures of Japan. A legendary sword that cuts the wind itself. Forged from the body of Yamata no Orochi, it represents divine power and eternal legacy. Now minted as $NAGI on Base.',
     imagePath: '/images/kusanagi-sword.png',
     dark: false,
     featured: true,
@@ -87,21 +87,28 @@ export const TOKENOMICS: TokenomicsData = {
       percentage: 81,
       amount: '810,000,000',
       color: 'bg-crimson',
-      description: 'Public allocation and retail traders',
+      description: "The common realm's share. Power distributed across the digital collective.",
     },
     {
       label: 'Funding',
       percentage: 6,
       amount: '60,000,000',
       color: 'bg-amber-600',
-      description: 'Reserved for project funding',
+      description: "Ritual sustenance. Ensuring the shrine's longevity for eons to come.",
     },
     {
       label: 'Dev',
       percentage: 3,
       amount: '30,000,000',
       color: 'bg-slate-700',
-      description: 'Reserved for development and operations',
+      description: "Master smiths. The architects of the blade's technical evolution.",
+    },
+    {
+      label: 'Liquidity',
+      percentage: 10,
+      amount: '100,000,000',
+      color: 'bg-indigo-900',
+      description: "Eternal flux. Maintaining the path for all seekers of the sacred edge.",
     },
   ],
 }
@@ -134,7 +141,7 @@ export const ROADMAP: RoadmapData = {
       date: 'Q1 2026',
       completed: true,
       items: [
-        'Token contract deployment on Solana',
+        'Token contract deployment on Base',
         'Website launch with mythology exhibition',
         'Community X Setup',
         'Initial liquidity pool creation',
@@ -148,7 +155,7 @@ export const ROADMAP: RoadmapData = {
       date: 'Q2 2026',
       completed: false,
       items: [
-        'DEX listings (Raydium, Jupiter)',
+        'DEX listings (Uniswap)',
         'Community governance token launch',
         'Strategic partnerships with other projects',
         'Marketing campaign expansion',
@@ -204,14 +211,16 @@ export interface TokenInfo {
   telegram: string
 }
 
+export const UNISWAP_LINK = "https://app.uniswap.org/swap?outputCurrency=UPCOMING&chain=base"
+
 export const TOKEN_INFO: TokenInfo = {
   name: 'Kusanagi no Tsurugi',
   symbol: '$NAGI',
-  contractAddress: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || 'HzwqSEsf8kqWxW4949pVM5gT3svWmwazcsXH3MsFHwtJ',
-  decimals: 6,
+  contractAddress: 'UPCOMING',
+  decimals: 18,
   totalSupply: '1,000,000,000',
   circulatingSupply: '500,000,000',
-  description: 'A legendary sword minted as a Solana meme coin. Inspired by Japanese mythology.',
+  description: 'A legendary sword minted as a Base meme coin. Inspired by Japanese mythology.',
   website: 'https://kusanagi-nagi.com',
   twitter: process.env.NEXT_PUBLIC_TWITTER_LINK || 'https://twitter.com/kusanagi_nagi',
   discord: process.env.NEXT_PUBLIC_DISCORD_LINK || 'https://discord.gg/kusanagi',
@@ -233,31 +242,31 @@ export interface Step {
 export const HOW_TO_BUY_STEPS: Step[] = [
   {
     number: 1,
-    title: 'Set Up a Solana Wallet',
-    description: 'Download and install a Solana-compatible wallet like Phantom, Solflare, or Magic Eden.',
+    title: 'Set Up a Base Wallet',
+    description: 'Download and install a Base-compatible wallet like Coinbase Wallet or MetaMask.',
     action: 'Download Wallet',
-    link: 'https://phantom.app',
+    link: 'https://www.coinbase.com/wallet',
   },
   {
     number: 2,
     title: 'Fund Your Wallet',
-    description: 'Transfer SOL tokens to your wallet from an exchange or another wallet.',
-    action: 'Get SOL',
+    description: 'Transfer ETH tokens to your wallet from an exchange or another wallet.',
+    action: 'Get ETH',
     link: 'https://www.coinbase.com',
   },
   {
     number: 3,
     title: 'Visit a DEX',
-    description: 'Go to Raydium or Jupiter and connect your wallet.',
-    action: 'Open Raydium',
-    link: process.env.NEXT_PUBLIC_RAYDIUM_LINK || 'https://raydium.io',
+    description: 'Go to Uniswap and connect your wallet.',
+    action: 'Open Uniswap',
+    link: UNISWAP_LINK,
   },
   {
     number: 4,
-    title: 'Swap SOL for $NAGI',
-    description: 'Enter the amount of SOL you want to swap for $NAGI tokens.',
+    title: 'Swap ETH for $NAGI',
+    description: 'Enter the amount of ETH you want to swap for $NAGI tokens.',
     action: 'Swap Now',
-    link: process.env.NEXT_PUBLIC_RAYDIUM_LINK || 'https://raydium.io',
+    link: UNISWAP_LINK,
   },
   {
     number: 5,
@@ -318,8 +327,8 @@ export const FOOTER_LINKS: FooterLink[] = [
 // ============================================================================
 
 /**
- * Format a Solana token address for display with truncation
- * @param address - Full Solana address (44 characters)
+ * Format a Base token address for display with truncation
+ * @param address - Full Base address
  * @param displayLength - Number of characters to show (default: 8)
  * @returns Formatted address like "XXXX...XXXX"
  */
