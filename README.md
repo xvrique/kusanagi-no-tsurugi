@@ -1,81 +1,112 @@
 # Kusanagi no Tsurugi ($NAGI)
 
-A legendary sword minted as a Solana meme coin. Inspired by Japanese mythology, Kusanagi no Tsurugi represents precision, myth, and force. The project is built with a distinctive "Museum-Brutalist" design language, balancing stark, structural elements with deep, atmospheric mythology.
+![Kusanagi no Tsurugi Preview](images/image.png)
 
-## Overview
+Kusanagi no Tsurugi ($NAGI) is a legendary sword-themed meme coin minted on the Base Network, inspired by Japanese mythology. The project balances stark, structural brutalism with deep, atmospheric mythos, presenting a modern "Museum-Brutalist" digital exhibition.
 
-Kusanagi no Tsurugi is a high-performance, interactive landing page built to establish the digital presence of the $NAGI token. It features fluid animations, a curated color palette (Cream, Ink, and Crimson), and a responsive, modular component architecture. 
+---
 
-The aesthetic marries traditional Japanese mythos with modern, brutalist web design principles to create a unique and memorable user experience.
+## Technical Architecture
 
-## Key Features
+The platform is engineered using a modular Next.js architecture designed for fast rendering, responsive layout shifts, and heavy graphical stability.
 
-- **Museum-Brutalist Aesthetics**: A strict design system utilizing a tri-color palette, rigid grid structures, and sharp typography.
-- **Fluid Animations**: Leveraging Framer Motion for scroll-linked animations, subtle floating particle systems, and interactive UI feedback.
-- **Responsive Architecture**: Fully optimized for mobile, tablet, and desktop environments.
-- **Modular Components**: Maintainable architecture with isolated sections for Hero, About, Mythology, Tokenomics, Roadmap, and How To Buy.
-- **Next.js App Router**: Utilizing the latest Next.js features for optimal performance and SEO.
-
-## Tech Stack
-
-- **Framework**: [Next.js](https://nextjs.org/) (App Router)
-- **Library**: [React](https://react.dev/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev/)
+### Core Stack
+- **Framework**: Next.js (App Router, Turbopack enabled)
+- **Library**: React 19
+- **Styling**: Tailwind CSS v4
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
 - **Language**: TypeScript
 
-## Getting Started
+---
+
+## Key Exhibition Features
+
+### 1. Destiny Engine (Lore Generator)
+An interactive ritualistic lore card generator. Users input a lineage name to generate a custom Divine Artifact Card combined with random mythological attributes, complete with non-clipping text scaling and vertical-first ordering optimized for mobile viewports.
+
+### 2. Mythology Modal Exhibition
+State-driven overlays showcasing high-resolution art and backstory of key mythological entities:
+- **Yamato Takeru** (The Hero Prince)
+- **Yamata no Orochi** (The Eight-Headed Serpent)
+- **Kusanagi no Tsurugi** (The Grass-Cutting Sword)
+
+### 3. Responsive Layout Control
+A custom responsive grid layout designed to dynamically rearrange content (e.g. prioritizing the Artifact Card above analytical attributes) on narrow screens, avoiding clipping or overlapping text.
+
+---
+
+## Token Specifications
+
+| Parameter | Specification |
+| :--- | :--- |
+| **Token Name** | Kusanagi no Tsurugi |
+| **Token Symbol** | $NAGI |
+| **Network** | Base |
+| **Decimals** | 18 |
+| **Total Supply** | 1,000,000,000 |
+| **Circulating Supply** | 500,000,000 |
+| **Contract Address** | `UPCOMING` |
+
+### Allocation Matrix
+
+| Allocation | Percentage | Amount | Description |
+| :--- | :---: | :---: | :--- |
+| **Retail** | 81% | 810,000,000 | Distributed across the digital collective. |
+| **Liquidity** | 10% | 100,000,000 | Locked pool for stable trading flow. |
+| **Funding** | 6% | 60,000,000 | Long-term operational and shrine sustenance. |
+| **Dev** | 3% | 30,000,000 | Master smiths and developers allocation. |
+
+---
+
+## Development Guide
 
 ### Prerequisites
-
-Ensure you have the following installed on your local machine:
-- Node.js (version 18.17 or higher)
-- npm, yarn, pnpm, or bun
+- Node.js 18.17+
+- npm / yarn / pnpm
 
 ### Installation
-
 1. Clone the repository:
+   ```bash
+   git clone https://github.com/xvrique/kusanagi-no-tsurugi.git
+   cd kusanagi-no-tsurugi
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the local development server:
+   ```bash
+   npm run dev
+   ```
+   Open `http://localhost:3000` to view the page.
+
+### Production Build
+To run static page compilation and verify the production build:
 ```bash
-git clone https://github.com/xvrique/kusanagi-no-tsurugi.git
-cd kusanagi-no-tsurugi
+npm run build
 ```
 
-2. Install the dependencies:
-```bash
-npm install
-# or
-yarn install
-# or
-pnpm install
+---
+
+## Directory Structure
+
+```text
+├── images/                  # Repository preview assets
+├── public/                  # Public assets
+│   ├── images/              # Illustration assets & SVG particles
+│   └── sounds/              # Audio assets for UI feedback
+├── src/
+│   ├── app/                 # Next.js App Router entry & global styling
+│   ├── components/
+│   │   ├── layout/          # Global Shell components (Navbar, Footer)
+│   │   ├── sections/        # Section-specific components (Hero, About, Tokenomics)
+│   │   └── ui/              # Atom components (Particles, Badges, Modals)
+│   └── lib/                 # Utility files, constants, and animation presets
+└── tailwind.config.ts       # Design token configurations
 ```
 
-### Running Locally
+---
 
-Start the development server:
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the application. The page will auto-update as you edit the source files.
-
-## Project Structure
-
-- `/src/app`: Core Next.js routing and layout configuration.
-- `/src/components/layout`: Global structural components (Navbar, Footer).
-- `/src/components/sections`: Page-specific modular sections (Hero, About, Tokenomics, etc.).
-- `/src/components/ui`: Reusable UI elements (Buttons, Cards, Badges, Particles).
-- `/src/lib`: Utility functions, animation variants, and constant data.
-- `/public/images`: Static graphical assets, character illustrations, and decorative particles.
-
-## Deployment
-
-The application is optimized for deployment on [Vercel](https://vercel.com/), the platform built by the creators of Next.js. Simply import the repository into your Vercel dashboard for an automated, zero-configuration deployment pipeline.
-
-## License
-
-All rights reserved. $NAGI is a meme coin intended for entertainment purposes. Not financial advice.
+## Disclaimer
+$NAGI is a meme coin created for entertainment and community purposes. It is not an investment vehicle and does not constitute financial advice.

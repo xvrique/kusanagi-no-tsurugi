@@ -41,12 +41,12 @@ export default function Hero() {
         {/* Giant Background Title - positioned in upper area as a horizontal band */}
         <div className="absolute left-0 right-0 top-[15%] md:top-[25%] pointer-events-none z-0 select-none flex items-center justify-center overflow-hidden">
           <div
-            className="w-full flex flex-col md:flex-row items-center justify-center gap-2 md:gap-[10vw] px-4 md:px-0"
+            className="w-full flex flex-col md:flex-row items-center justify-center gap-2 md:gap-[9vw] px-4 md:px-0"
           >
-            <span className="text-[14vw] md:text-[8vw] font-black tracking-[-0.04em] text-ink/80 md:text-ink leading-[0.8] md:leading-[0.85] uppercase" style={{ transform: 'scaleY(1.35)', transformOrigin: 'center' }}>
+            <span className="text-[12vw] md:text-[7.2vw] font-black tracking-[-0.03em] text-ink/80 md:text-ink leading-[0.8] md:leading-[0.85] uppercase" style={{ transform: 'scaleY(1.35)', transformOrigin: 'center' }}>
               KUSANAGI
             </span>
-            <span className="text-[14vw] md:text-[8vw] font-black tracking-[-0.04em] text-ink/80 md:text-ink leading-[0.8] md:leading-[0.85] uppercase whitespace-nowrap" style={{ transform: 'scaleY(1.35)', transformOrigin: 'center' }}>
+            <span className="text-[12vw] md:text-[7.2vw] font-black tracking-[-0.03em] text-ink/80 md:text-ink leading-[0.8] md:leading-[0.85] uppercase whitespace-nowrap" style={{ transform: 'scaleY(1.35)', transformOrigin: 'center' }}>
               NO TSURUGI
             </span>
           </div>
